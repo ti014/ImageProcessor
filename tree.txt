@@ -1,0 +1,12 @@
+image_processor_app/
+├── gui/
+│   ├── __init__.py
+│   └── app.py
+├── processing/
+│   ├── __init__.py
+│   └── image_processor.py
+├── utils/
+│   ├── __init__.py
+│   └── file_utils.py
+├── main.py
+└── requirements.txt
