@@ -1,37 +1,36 @@
 # Image Processor App
 
-This Image Processor App allows users to crop or resize images. It provides an intuitive GUI where you can specify input and output folders, target dimensions, and choose between cropping or resizing your images. The app can automatically detect faces for cropping, and you can also rename processed files using randomly generated UUIDs.
+Ứng dụng cho phép người dùng cắt hoặc thay đổi kích thước ảnh. Ngoài ra còn có thể tự động phát hiện khuôn mặt để chỉ tập trung cắt vùng gần đó, tự động đổi tên các tệp sau khi xử lý.
 
-## Features
-- **Crop**: Crop images to the target size, centered around the detected face or image center.
-- **Resize**: Resize images to the specified dimensions.
-- **Auto-Rename**: Rename processed images with a unique UUID.
-- **Cancel Operation**: Cancel ongoing image processing at any time.
-- **Progress Tracking**: Track the progress of image processing through a progress bar.
 
-## Installation
-### Prerequisites
-- Python 3.x
+## Tính Năng
+- **Crop**: Cắt ảnh theo kích thước mục tiêu, tập trung vào khuôn mặt được phát hiện hoặc trung tâm của ảnh..
+- **Resize**: Thay đổi kích thước ảnh theo kích thước đã chỉ định.
+- **Auto-Rename**: Đổi tên các ảnh đã xử lý bằng UUID duy nhất.
+- **Cancel Operation**: Hủy bỏ quá trình xử lý ảnh đang diễn ra bất cứ lúc nào.
+- **Progress Tracking**: Theo dõi tiến trình xử lý ảnh thông qua thanh tiến trình.
+
+## Cài Đặt
+### Yêu Cầu
+- Python > 3.8.x
 - Pip (Python package installer)
 
-### Install dependencies:
-To install the required packages, run:
+### Cài Đặt Các Gói Phụ Thuộc:
+Để cài đặt các gói cần thiết, chạy lệnh sau:
 ```bash
 pip install -r requirements.txt
 ```
 
-### Running the App
-Run the following command to start the application:
+### Chạy Ứng Dụng
+Chạy lệnh sau để khởi động ứng dụng:
 ```bash
 python main.py
 ```
+Ngoài ra, bạn có thể sử dụng tệp .exe có sẵn trong phần phát hành.
+## Sử Dụng
+1. **Input Folder**: Duyệt để chọn thư mục chứa các ảnh cần xử lý.
+2. **Output Folder**: Duyệt để chọn thư mục nơi các ảnh đã xử lý sẽ được lưu.
 
-## Usage
-1. **Input Folder**: Browse to select the folder containing the images to process.
-2. **Output Folder**: Browse to select the folder where the processed images will be saved.
-3. **Action Selection**: Choose between cropping or resizing images.
-4. **Target Size**: Specify the target width and height for both cropping and resizing.
-5. **Auto Rename**: Optionally, rename processed files with random UUIDs.
 
-## Cancelling Processing
-You can cancel the image processing task at any time by pressing the "Cancel" button. The process will stop, and no further images will be processed.
+## Hủy Bỏ Xử Lý
+Bạn có thể hủy bỏ tác vụ xử lý ảnh bất cứ lúc nào bằng cách nhấn nút "Cancel".
