@@ -4,10 +4,13 @@ import mediapipe as mp
 import uuid  # Importing UUID module for generating random file names
 import numpy as np  # Importing numpy for adding noise
 
+
 class ImageProcessor:
     def __init__(self):
         self.mp_face_detection = mp.solutions.face_detection
-        self.face_detection = self.mp_face_detection.FaceDetection(min_detection_confidence=0.5)
+        self.face_detection = self.mp_face_detection.FaceDetection(
+            min_detection_confidence=0.5
+        )
 
     def detect_face(self, image):
         results = self.face_detection.process(cv2.cvtColor(image, cv2.COLOR_BGR2RGB))
@@ -37,7 +40,22 @@ class ImageProcessor:
         cropped_image = image[start_y:end_y, start_x:end_x]
         return cropped_image
 
-    def process_image(self, image_path, output_folder, target_width, target_height, action, rename_files, detect_face, flip_image, flip_axis, rotate_image, rotate_angle, add_noise, noise_level):
+    def process_image(
+        self,
+        image_path,
+        output_folder,
+        target_width,
+        target_height,
+        action,
+        rename_files,
+        detect_face,
+        flip_image,
+        flip_axis,
+        rotate_image,
+        rotate_angle,
+        add_noise,
+        noise_level,
+    ):
         image = cv2.imread(image_path)
         if image is None:
             return f"Cannot read image from path: {image_path}"
@@ -60,19 +78,29 @@ class ImageProcessor:
                 # Step 1: Detect face and crop around it
                 center = self.detect_face(image)
                 if not center:
-                    center = (image.shape[1] // 2, image.shape[0] // 2)  # Default to image center if no face is detected
+                    center = (
+                        image.shape[1] // 2,
+                        image.shape[0] // 2,
+                    )  # Default to image center if no face is detected
             else:
-                center = (image.shape[1] // 2, image.shape[0] // 2)  # Default to image center
+                center = (
+                    image.shape[1] // 2,
+                    image.shape[0] // 2,
+                )  # Default to image center
 
             center_x, center_y = center
-            cropped_image = self.crop_image(image, center_x, center_y, target_width, target_height)
+            cropped_image = self.crop_image(
+                image, center_x, center_y, target_width, target_height
+            )
 
             if cropped_image is None or cropped_image.size == 0:
                 return f"Could not crop image: {os.path.basename(image_path)}."
 
             final_image = cropped_image
         else:  # Resize action
-            final_image = cv2.resize(image, (target_width, target_height), interpolation=cv2.INTER_CUBIC)
+            final_image = cv2.resize(
+                image, (target_width, target_height), interpolation=cv2.INTER_CUBIC
+            )
 
         # Step 2: Save with random UUID filename
         if rename_files:
